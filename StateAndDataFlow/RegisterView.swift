@@ -14,19 +14,24 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
-            TextField("Enter your name...", text: $name)
-                .multilineTextAlignment(.center)
+            HStack(spacing: 5) {
+                Spacer()
+                TextField("Enter your name...", text: $name)
+                    .multilineTextAlignment(.center)
+                Text("\(name.count)")
+                    .foregroundColor(name.count > 2 ? .green : .red)
+            }.padding(.horizontal, 16)
             Button(action: registerUser) {
                 HStack {
                     Image(systemName: "checkmark.circle")
                     Text("OK")
-                }
+                }.disabled(name.count > 2 ? false : true)
             }
         }
     }
     
     private func registerUser() {
-        if !name.isEmpty {
+        if !name.isEmpty && !userManger.isRegistered {
             userManger.name = name
             userManger.isRegistered.toggle()
         }
