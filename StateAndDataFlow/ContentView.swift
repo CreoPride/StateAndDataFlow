@@ -15,10 +15,9 @@ struct ContentView: View {
         VStack {
             Text("Hi, \(user.name)")
                 .font(.largeTitle)
-                .padding(.top, 30)
+                .padding(.vertical, 30)
             Text("\(timer.counter)")
                 .font(.largeTitle)
-//                .padding(.top, 30)
             Spacer()
             StartButtonView(timer: timer)
             Spacer()
